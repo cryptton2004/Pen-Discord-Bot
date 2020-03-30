@@ -7,9 +7,8 @@
 
 # PEN-DISCORD-BOT
 A Pen & Paper helper bot for Discord created using node.js with the [discord.js](https://github.com/discordjs) framework.
-This is an open-source project and is currently still in development. A lot is still to be done.
+This is a hobby project, so don't expect much as there isn't a defined direction yet.
 
-This is a project to practice and learn more on how to create a bot for Discord and to practice javascript.
 Anybody who is willing to join in on this project is welcome to do so!
 
 
