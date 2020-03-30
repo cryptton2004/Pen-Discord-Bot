@@ -87,15 +87,6 @@ let groupedCharacterSchema = new mongoose.Schema({
     type: Number,
     required: false,
     unique: false
-  },
-  email: {
-    type: String,
-    required: false,
-    unique: false,
-    lowercase: false,
-    validate: (value) => {
-      return validator.isEmail(value)
-    }
   }
 },
 { collection: 'characters'})
