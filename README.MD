@@ -27,9 +27,14 @@ nodejs
 mongodb
 ```
 
-# MONGODB Requirements
+# COMMANDS
 ```
-
+| Command  | Description |
+| ------------- | ------------- |
+| !inv  | Displays player inventory  |
+| !inventory  | Displays player inventory |
+| !itemAdd  Username;itemCategory;itemName;itemDescription;quantity| Quantity field is optional. Adds an item to the username; Supported category: gear,weapon,buff |
+| !addItem  | Same as above  |
 ```
 
 # Installation
