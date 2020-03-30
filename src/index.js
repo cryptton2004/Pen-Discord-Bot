@@ -145,7 +145,8 @@ client.on('message', message => {
             break;          
         case "!inv":
         case '!inventory':
-            var username = message.author.username;
+            var wordsInContent = args.split(";")
+            var username = wordsInContent[0] || message.author.username || "undefined" 
             //var username = 'Joker';
             retrieveGroupedCharacterItems(username, function(err, items) {
                 if (err) { console.log(err);}
