@@ -284,28 +284,47 @@ client.on('message', message => {
 
 
             let results = []
+            let inlineParam = true;
+            
             for(i = 0; i < numberOfDices; i++){
                 let  rolledDice = rollDiceFunction(numberOfFaces, reRoll)
+                let critDice = '';
                 results[i] = rolledDice.flat(Infinity);
                 let diceIndex = parseFloat(i)+1
-                finalRollResult.addField('Dice: '+ diceIndex, results[i] , true)
+                let boxTextFormat = 'markdown\n#'               
+                if(results[i].length > 1){
+                    critDice = " - [CRIT!]"
+                    boxTextFormat = 'prolog\n'
+                }
+                //addBlankBefore
+                finalRollResult.addField('Dice: '+diceIndex + critDice, "```"+boxTextFormat + results[i]+ "```", inlineParam)
+                
+                if(numberOfDices % 3 != 0){
+                    if((diceIndex+1) / numberOfDices >= 1){
+                        if(numberOfDices % diceIndex == 1){
+                            finalRollResult.addField('\u200b', '\u200b', true)
+                        } else if (numberOfDices % diceIndex == 0 && diceIndex % 3 == 2){
+                            //finalRollResult.addField('\u200b', '\u200b', false)
+                        } else if (numberOfDices % diceIndex == 0){
+                            finalRollResult.addField('\u200b', '\u200b', true)
+                        }
+                    }
+                }
                 results
             }
-            //finalRollResult.addField('\u200b', '\u200b')
-            // results.forEach(function (value, idx) {
-            //     let rollIndex = idx+1
-            //     finalRollResult.addField('Dice: '+rollIndex, value, true)
-            // });
-            results = results.flat()
-            let arrMin = Math.min(...results);
-            let arrMax = Math.max(...results);
-            let sum = results.reduce((a, b) => a + b, 0)
-            let avg = results.reduce((a, b) => a + b, 0) / results.length
 
-            finalRollResult.addField('Dice Min: ', "```fix\n "+arrMin+"```")
+            results = results.flat()
+            let arrMin = Math.round((Math.min(...results)  + Number.EPSILON) * 100) / 100;
+            let arrMax = Math.round((Math.max(...results)  + Number.EPSILON) * 100) / 100;
+            let sum = Math.round((results.reduce((a, b) => a + b, 0)  + Number.EPSILON) * 100) / 100;
+            let avg = Math.round((results.reduce((a, b) => a + b, 0) / results.length  + Number.EPSILON) * 100) / 100;
+
+            finalRollResult.addField('Dice Min: ', "```fix\n "+arrMin+"```", true)
             finalRollResult.addField('Dice Max: ', "```fix\n "+arrMax+"```", true)
-            finalRollResult.addField('Dice Avg: ', "```fix\n "+avg+"```")
+            finalRollResult.addField('Dice Avg: ', "```fix\n "+avg+"```", true)
+            finalRollResult.addField('\u200b', '\u200b', true)
             finalRollResult.addField('Dice Total: ', "```fix\n "+sum+"```", true)
+            finalRollResult.addField('\u200b', '\u200b', true)
             message.channel.send(finalRollResult);
             break;
 
