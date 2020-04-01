@@ -1,5 +1,6 @@
 let mongoose = require('mongoose')
 let validator = require('validator')
+let timestampPlugin = require('./plugins/timestamp')
 
 let characterSchema = new mongoose.Schema({
   name: {
@@ -36,31 +37,9 @@ let characterSchema = new mongoose.Schema({
       return validator.isEmail(value)
     }
   }
-})
-
-var itemSchema = new mongoose.Schema({
-  category: {
-    type: String,
-    required: true,
-    unique: false
-  },
-  itemName: {
-    type: String,
-    required: true,
-    unique: false
-  },
-  itemDescription: {
-    type: String,
-    required: true,
-    unique: false
-  },
-  quantity: {
-    type: Number,
-    required: false,
-    unique: false
-  }
 },
-{ collection: 'Characters'})
+{ collection: 'characters'})
+
 
 let groupedCharacterSchema = new mongoose.Schema({
   name: {
@@ -91,7 +70,7 @@ let groupedCharacterSchema = new mongoose.Schema({
 },
 { collection: 'characters'})
 
-let timestampPlugin = require('./plugins/timestamp')
+
 
 characterSchema.plugin(timestampPlugin)
 groupedCharacterSchema.plugin(timestampPlugin)
