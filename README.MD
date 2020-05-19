@@ -6,7 +6,7 @@
 </div>
 
 # PEN-DISCORD-BOT
-A Pen & Paper helper bot for Discord created using node.js with the [discord.js](https://github.com/discordjs) framework.
+A Pen & Paper helper bot for Discord using node.js with the [discord.js](https://github.com/discordjs) framework.
 This is a hobby project, so don't expect much as there isn't a defined direction yet.
 
 Anybody who is willing to join in on this project is welcome to do so!
