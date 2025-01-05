@@ -115,10 +115,11 @@ const { Client, MessageEmbed } = require('discord.js');
 // Create an instance of a Discord client
 const client = new Client();
 
+// should be in db, but meh
 const characterLinks= [
-{username: "MrCryptton", url: "https://docs.google.com/spreadsheets/d/1kq1WxPpW9z6tspxWiZJqnJ6ni6P9HgILjWcWSoB__bQ/edit#gid=1646260770"},
-{username: "J0k3r", url: "https://docs.google.com/spreadsheets/d/1kq1WxPpW9z6tspxWiZJqnJ6ni6P9HgILjWcWSoB__bQ/edit#gid=2126638782"},
-{username: "Calin", url: "https://docs.google.com/spreadsheets/d/1kq1WxPpW9z6tspxWiZJqnJ6ni6P9HgILjWcWSoB__bQ/edit#gid=1107798428"}
+    {username: "MrCryptton", url: "https://placeholder"},
+    {username: "J0k3r", url: "https://placeholder"},
+    {username: "Calin", url: "https://placeholder"}
 ];
 
 /**
